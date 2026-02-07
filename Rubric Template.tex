@@ -1,0 +1,125 @@
+\documentclass[11pt]{article}
+
+%####### DON'T CHANGE MARGIN SETTINGS ###########
+\newcommand{\keywordfont}{\textsc}
+\newcommand{\keyword}[1]{%
+  \marginpar{\raggedright\small\keywordfont{#1}}}
+\reversemarginpar
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, outer=2cm, inner=3.3cm, marginparwidth=72pt, heightrounded]{geometry}
+%#################################
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{microtype}
+% Preamble requirements:
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning}
+
+\newtheorem{claim}{Claim}
+\newtheorem{conjecture}{Conjecture}
+
+
+
+
+\begin{document}
+
+\Large
+\begin{center}
+\textbf{MA3K7 Week $N$ Rubric}
+\\
+Jane Smith (2012345)
+\end{center}
+\normalsize
+
+Feel free to describe the problem here, although there is no real need to  (unless you feel it's necessary). The submissions go through Turnitin so it's best not to reproduce the question word-for-word.
+
+
+
+\section{Entry}
+
+Lorem ipsum dolor sit amet\keyword{I know}, consectetur adipiscing elit. Cras pretium 
+condimentum dignissim. Proin eu ullamcorper lacus, id eros. Cras 
+convallis dolor quam, laoreet pellentesque neque aliquam eu. Donec odio magna, 
+laoreet\keyword{Introduce} at fringilla et, varius vitae ipsum. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Attack}
+Lorem ipsum dolor sit amet\keyword{Stuck}, consectetur adipiscing elit. Cras pretium 
+condimentum dignissim. Proin eu ullamcorper lacus, id eros. Cras 
+convallis dolor quam, laoreet pellentesque neque aliquam eu. Donec odio magna, \keyword{Aha!}
+laoreet at fringilla et, varius vitae ipsum. 
+
+Check out fig. \ref{myfig} below that I produced with Python.
+
+\begin{figure}[h] % h means put the figure "here"
+   \centering
+   \includegraphics[width=2in]{samplefig1.png} 
+   \caption{A super cool figure which I produced in Python.}
+   \label{myfig}
+\end{figure}
+
+Here's a graph which I won't bother to label as a figure.
+
+\begin{center}
+    \includegraphics[width=2.5in]{samplefig2.png}    
+\end{center}
+
+\section{Solution}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium 
+condimentum dignissim. Proin eu ullamcorper lacus, id eros. Cras 
+convallis dolor quam, laoreet pellentesque neque aliquam eu. Donec odio magna, 
+laoreet at fringilla et, varius vitae ipsum.
+
+\begin{claim}
+
+\end{claim}
+
+\begin{proof}
+
+\end{proof}
+
+
+
+
+\section{Review}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras pretium 
+condimentum dignissim. Proin eu ullamcorper lacus, id eros.\keyword{Check} Cras 
+convallis dolor quam, laoreet pellentesque neque aliquam eu. Donec odio magna, 
+laoreet at fringilla et, varius vitae ipsum. 
+
+
+
+
+
+It would be a good idea to discuss how Python has helped you in the problem-solving process\keyword{Reflect}.
+
+
+Don't include your code in the rubric (as screenshots or otherwise), unless you've done something extraordinarily clever and would like to point it out as a `proud moment'. It's more useful to show code output (numbers or graphics).
+
+
+\section*{Code}
+The code for this assignment can be found on my GitHub page:\\  
+\url{https://github.com/siriwarwick/book/tree/main/Chapter4}
+
+In particular, \texttt{mandelbrot.ipynb} was used to plot fig. 1.
+
+\end{document}
