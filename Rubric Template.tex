@@ -232,7 +232,6 @@ In all cases it does not matter where the first two moves are, as the determinan
 
 \begin{claim} For $N \geq 4:P_0$ wins independent of who starts
 
-Let $n\ge 4$. Player $0$ wins iff the final\keyword{Notation} matrix $M\in\{0,1\}^{n\times n}$ satisfies $\det(M)=0$, Player $0$ has a winning strategy given by our algorithm so following this strategy forces $\det(A)=0$. We need to prove this.
 For each column $j\in\{1,2,\dots,n\}$ define the \emph{key pairs}
 \[
 P_{12}(j):=\bigl((j,1),(j,2)\bigr),\qquad P_{34}(j):=\bigl((j,3),(j,4)\bigr).
@@ -291,7 +290,9 @@ A mistake has been made previously, just place a zero anywhere but the algorithm
 \end{tikzpicture}}
 \end{figure}
 \end{claim}
-The intention of our algorithm is to force a linear dependants between two pairs of columns
+
+\noindent
+The \keyword{note}intention of our algorithm is to force a linear dependants between two pairs of columns
 
 
 \begin{proof}
@@ -344,12 +345,21 @@ We can \keyword{extension}make the question more interesting by making it more d
 
 Consider N = 2,3 since $P_0$'s method is to force every element of the determinant to be zero, allowing $P_1$ to chose any range of real numbers would not help. Where this becomes useful for $P_1$ is $N\ge4$, as thats where $P_0$'s strategy is broken. I tried many iterations of this game but was unable to find any sort of dominating stragety for either, thus becoming a more fair game.
 
-Another idea would be to use the rank of the matrix as the determining factor for who wins. If we said for $P_0$ to win, they must force $Rank(N) \leq N/2$. eg for N = 4, $P_0$ would have to construct two linear dependencies for the columns.
-This would also stop the key row method from working, because even if $P_0$ formed more then 2 key rows, they could only ever reduce the rank by the number of key columns -1, this would reduce the rank by max $N/2 +1$ this would make the game fairer again.
-one downside to this idea is that for small N, most matrices have rank close to N. we would need to chose $K$, $Rank(N) \leq N/2$ with K
+
+\noindent
+\begin{minipage}[t]{0.5\textwidth}
+Another idea would be to use the rank of the matrix as the determining factor for who wins. If we said for $P_0$ to win, they must force $Rank(N) \leq K, \exists K \leq N$. This would stop the key row method from working for small enough $K$, because even if $P_0$ formed more then 2 key rows, they could only ever reduce the rank by the number of key columns -1, this would reduce the rank by max $N/2 +1$ thus making the game fairer again.
+one downside to this idea is that for small N, most matrices have rank close to N. we would need to chose $K$, $Rank(N) \leq K$
+\end{minipage}\hfill
+\begin{minipage}[t]{0.47\textwidth}
+\centering
+\includegraphics[width=\textwidth]{rank_distribution.png}
+\end{minipage}
 
 
-Initially \keyword{reflect}when i played the first couple games with a friend, i thought that there wouldn't be a dominating strategy for anything larger then n = 3, especially one that could be applied without any real calculations, as opposed to some arduous formula a computer could make. I was pleasantly surprised when i stumbled across it as it seems to be a very convenient method. It wasn't too difficult to code either, after getting over the roadblocks of floating point errors of the determinant leading to false positives for losing the game (it was easier to check the rank was less than n, and mathematically equivalent). I also liked using the tiks package, i used it slightly in my essay last year, but it was good to learn properly
+
+
+Initially \keyword{reflect}when i played the first couple games with a friend, i thought that there wouldn't be a dominating strategy for anything larger then n = 3, especially one that could be applied without any real calculations, as opposed to some arduous formula a computer could make. I was pleasantly surprised when i stumbled across it as it seems to be a very convenient method. It wasn't too difficult to code either, after getting over the roadblocks of floating point errors of the determinant leading to false positives for losing the game (it was easier to check the rank was less than n, and mathematically equivalent). I also liked using the tiks package, i used it slightly in my essay last year, but it was good to learn properly.
 
 
 
@@ -359,6 +369,6 @@ The code for this assignment can be found on my GitHub page:\\
 \url{https://github.com/jobryen/PWP-Assignment-2}
 
 
-In particular, all algorithms that we proposed have been created and tested in python.
+In particular, all algorithms that we proposed have been created and tested in python, and the image in the extension was made in python also
 
 \end{document}
