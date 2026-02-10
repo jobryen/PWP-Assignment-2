@@ -40,7 +40,7 @@ Jake O'Bryen (5515129)
 Two people are \keyword{i know}playing a game where they take turns to add a number to an $N\times N$ matrix. One player can only place ones, and they win if the matrix has a non-zero determinant, the other player can only place 0s and wins if the determinant is 0. We do not know who starts.
 From a game theory point of view we can see that the game is a finite, perfect-information, deterministic, two-player, zero-sum, partizan game but that is not of much use to use.
 
-We want to figure \keyword{I want}out what happens $\forall N$, does either player have a dominating strategy? Is this strategy / winning player dependant on who starts? Will the winning player change for different values of N?
+We want to figure \keyword{i want}out what happens $\forall N$, does either player have a dominating strategy? Is this strategy / winning player dependant on who starts? Will the winning player change for different values of N?
 \vspace{-10pt}
 \paragraph{Vocabulary}
 \begin{itemize}\keyword{Introduce}
@@ -73,14 +73,14 @@ For N = 2: This is easily solved, as there are only two unique end states for th
 \end{minipage}
 \par\medskip
 
-\noindent For N = 3, this case is small enough such that we can look at the determinant directly to come up with our strategy. Since there is an odd number of elements we should consider each staring case individually:
+\noindent For N = 3, this case\keyword{idea} is small enough such that we can look at the determinant directly to come up with our strategy. Since there is an odd number of elements we should consider each staring case individually:
 For $P_0$ starts, place a 0 wherever and populate the rest of the matrix with letters so we can consider the determinant of the matrix.
 \[
-M=\begin{pmatrix}
+M=\begin{bmatrix}
 0 & b & c\\
 d & e & f\\
 g & h & i
-\end{pmatrix}
+\end{bmatrix}
 \qquad\Longrightarrow\qquad
 \det(M)=g(bf - ec) - d(bi - ch) = gbf - gec + dch - dbi
 \]
@@ -88,11 +88,11 @@ The game has now been reduces to letting each of these letters equal 1 or 0 to t
 
 If $P_1$ starts, we can apply a similar approach. After $P_1$ places a $1$, place a $0$ in a different row and column such that WLOG:
 \[
-M=\begin{pmatrix}
+M=\begin{bmatrix}
 1 & b & c\\
 d & e & 0\\
 g & h & i
-\end{pmatrix}
+\end{bmatrix}
 \qquad\Longrightarrow\qquad
 \det(M)=c(dh - eh) + i(e-db) =cdh-ceg+ie-bdi
 \]
@@ -105,7 +105,7 @@ When \keyword{check}we try simulating two players playing randomly, all we need 
 \vspace{5pt}
 \noindent
 \textbf{Player 0 will win $\forall N$, independent of who starts}
- \keyword{Conjecture}
+ \keyword{conjecture}
 \vspace{5pt}
 
 $M$ is invertible $\iff$ $M^T$ is invertible, so \keyword{note}we can either show $M $ is invertible or $M^T$ is invertible. Thus any method we use on columns can also be applied to rows!
@@ -158,7 +158,7 @@ If \(P_0\) starts, place a random element, then continue mirroring until eventua
 
 \end{minipage}
 
-For $N > 4$: let's try the \keyword{Stuck}same method, where we mirror the entries. There won't be an issue with this for even N, but what do we do if N is odd; there will be a central row that we cannot mirror. What do we do?
+For $N > 4$: let's try the \keyword{stuck}same method, where we mirror the entries. There won't be an issue with this for even N, but what do we do if N is odd; there will be a central row that we cannot mirror. What do we do?
 let's try just adding an element somewhere in the middle row whenever they do. But wait, there are an odd number of columns in the row, so eventually there will be no space to mirror their move.
 
 Let's \keyword{justify}take a step back and look into the maths behind our method our method for $N = 4$ and see if we can adapt it for larger N
@@ -185,7 +185,7 @@ The reason our method works for N = 4 is because we force a linear dependance, b
 \end{minipage}
 \par\medskip
 \par\medskip
-Seeing as our method works for when either $P_0$ starts and for when $P_1$ starts, we actually already have the solution! If we are forced to move without mirroring a move, due to the outside being full, then we can place a 0 anywhere whose key column matchup doesn't already contain a 0 in the row. Since this can only happen once, its the equivalent of swapping who starts the game, just with a partially populated key columns ( this wont matter as they are already paired up). So for any $N > 4$ this game is also winning for $P_0$, independently of who starts. Let's prove this and produce an optimal play algorithm in python to test.
+Seeing as our method works\keyword{aha} for when either $P_0$ starts and for when $P_1$ starts, we actually already have the solution! If we are forced to move without mirroring a move, due to the outside being full, then we can place a 0 anywhere whose key column matchup doesn't already contain a 0 in the row. Since this can only happen once, its the equivalent of swapping who starts the game, just with a partially populated key columns ( this wont matter as they are already paired up). So for any $N > 4$ this game is also winning for $P_0$, independently of who starts. Let's prove this and produce an optimal play algorithm in python to test.
 
 You should only need to create an open pair once, if $P_0$ start, then at the start. If $P_1$ starts then when the outside space is full.
 
@@ -195,6 +195,8 @@ You should only need to create an open pair once, if $P_0$ start, then at the st
 
 
 \section{Solution}
+
+I have not \keyword{note}proved anything for $N=1$ or $N=2$, as they are trivial. The first player to move in $N=1$ will always win, and we deomonstrated every case for $N=2$ earlier, showing $P_0$ will always win
 
 \begin{claim} For $N = 3:P_0$ wins independent of who starts
 \begin{proof}
@@ -239,7 +241,7 @@ P_{12}(j):=\bigl((j,1),(j,2)\bigr),\qquad P_{34}(j):=\bigl((j,3),(j,4)\bigr).
 During play, each cell is in $\{0,1,\ast\}$, where $\ast$ denotes an empty cell. We call the two cells of a key pair partners. Call any non key columns 'outside'
 
 \noindent
-\emph{The \keyword{note}intention of our algorithm is to force a linear dependants between two pairs of columns}
+\emph{The \keyword{note}intention of our algorithm is to force a linear dependency between two pairs of columns}
 
 \begin{figure}[h]
 \centering
@@ -330,24 +332,23 @@ We have established that no key pair can be (0,0) or (1,1) when playing against 
 
 
 \section{Review}
-I am happy with the results, \keyword{check}as they have been checked two ways, we have a proof and a python algorithm for both $n = 3$ and $n \geq 4$, which both show that $P_0$ will always win, independent on who starts.
+I am happy with the results, \keyword{check}as they have been checked two ways, we have a proof for both $n = 3$ and $n \geq 4$, and we also have a python functino for $n \geq 4$ that always wins against a random opponent. which both show that $P_0$ will always win, independent on who starts.
 
 We can \keyword{extension}make the question more interesting by making it more difficult for player 0 to win, so we need to introduce a method for $P_1$ to escape the forced linear dependence. let's expand $P_1$'s move-set to $\{-1,1\}$. Hopefully this will make the game more fair.
 
 Consider N = 2,3 since $P_0$'s method is to force every element of the determinant to be zero, allowing $P_1$ to chose any range of real numbers would not help. Where this becomes useful for $P_1$ is $N\ge4$, as that is where $P_0$'s strategy is broken. I tried many iterations of this game but was unable to find any sort of dominating strategy for either, thus becoming a more fair game.
 
-Another idea would be to use the rank of the matrix as the determining factor for who wins. If we were to say for $P_0$ to win, they must force $\exists K \leq N, Rank(M) \leq K, $. This would stop the key row method from working for small enough $K$, because even if $P_0$ formed more then 2 key rows, they could only ever reduce the rank by the number of key columns -1, this would reduce the rank by max $N/2 +1$ thus making the game fairer again. One downside to this idea is that for small N, most matrices have rank close to N. Thus, making it nearly impossible for $P_0$ to win for $k \leq N-2$
-
+Another idea \keyword{generalise}would be to use the rank of the matrix as the determining factor for who wins. If we were to say for $P_0$ to win, they must force $Rank(M) \leq K $. This would stop the key row method from working for small enough $K$, because even if $P_0$ formed more then 2 key rows, they could only ever reduce the rank by the number of key columns -1, this would reduce the rank by max $N/2 +1$ thus making the game fairer again. One downside to this idea is that for small N, most matrices have rank close to N. Thus, making it nearly impossible for $P_0$ to win for $K \leq N-2$.
+In our original question, $K = N -1$, so this is a nice generalisation of the question
+\vspace{-5pt}
 \begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\linewidth]{rank_distribution.png}
-    \caption{Rank distribution for small N, Outer and inner rings when $P_1$ and $P_0$ start respectively.}
+    \centering    \includegraphics[width=0.85\linewidth]{rank_distribution.png}
 \end{figure}
 
 
 
 
-Initially \keyword{reflect}when I played the first couple games with a friend, I thought that there wouldn't be a dominating strategy for anything larger then n = 3, especially one that could be applied without any real calculations, as opposed to some arduous formula a computer could make. I was pleasantly surprised when I stumbled across it as it seems to be a very convenient method. It wasn't too difficult to code either, after getting over the roadblocks of floating point errors of the determinant leading to false positives for losing the game (it was easier to check the rank was less than n, and mathematically equivalent). I also liked using the tiks package, I used it slightly in my essay last year, but it was good to learn properly.
+Initially \keyword{reflect}when I played the first couple games with a friend, I thought that there wouldn't be a dominating strategy for anything larger then $N = 3$, especially one that could be applied without any real calculations, as opposed to some arduous formula a computer could make. I was pleasantly surprised when I stumbled across it as it seems to be a very convenient method. It wasn't too difficult to code either, after getting over the roadblocks of floating point errors of the determinant leading to false positives for losing the game (it was easier to check the rank was less than n, and mathematically equivalent). I also liked using the tiks package, I used it slightly in my essay last year, but it was good to learn properly.
 
 
 
@@ -358,6 +359,6 @@ The code for this assignment can be found on my GitHub page:\\
 \url{https://github.com/jobryen/PWP-Assignment-2}
 
 
-In particular, all algorithms that we proposed have been created and tested in python, and the image in the extension was made in python also.
+In particular, our $N \geq 4$ algorithm that we proposed have been created and tested in python, general calculations and the image in the extension was made in python also.
 
 \end{document}
